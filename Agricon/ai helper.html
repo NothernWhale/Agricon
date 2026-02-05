@@ -6,6 +6,29 @@
     <title>Document</title>
 </head>
 <body>
-    
+     <!-- AI HELPER MODAL -->
+  <div id="aiModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>AI Helper 🤖</h3>
+        <button class="close" onclick="closeModal('aiModal')">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="hint" id="aiChatBox">
+          Hello farmer 👋 I’m your friendly AI helper. Tell me the animal type and symptoms.
+          <br/><br/>Example: <b>Cow is coughing and not eating</b>
+        </div>
+
+        <label>Your message</label>
+        <input id="aiMsg" placeholder="Type symptoms..." />
+
+        <div class="modal-actions">
+          <button class="btn" onclick="closeModal('aiModal')">Close</button>
+          <button class="btn primary" onclick="askAI()">Ask AI</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
