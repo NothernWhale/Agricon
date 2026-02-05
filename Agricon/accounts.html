@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Accounts</title>
+
+<div id="account" class="page">
+          <div class="grid">
+
+            <div class="card">
+              <div class="section-title">
+                <span id="t_account">Account</span>
+                <small id="t_profile">Profile</small>
+              </div>
+
+              <div class="profile-card">
+                <div class="profile-left">
+                  <div class="avatar-wrap">
+                    <img id="profileImg" src="https://via.placeholder.com/200x200.png?text=Farmer" alt="Profile"/>
+                    <div class="edit-pic" onclick="document.getElementById('profileUpload').click()">✎</div>
+                  </div>
+
+                  <div class="profile-info">
+                    <h2 id="farmerName">Farmer</h2>
+                    <p id="farmName">My Farm</p>
+                    <p style="color:var(--muted); font-size:12px;" id="accountIdText">App ID: --</p>
+                  </div>
+                </div>
+
+                <button class="btn primary" onclick="openEditProfileModal()">Edit</button>
+              </div>
+
+              <input id="profileUpload" type="file" accept="image/*" style="display:none" />
+
+              <div class="section-title" style="margin-top:18px;">
+                <span id="t_finances">Finances</span>
+                <small id="t_manage_money">Manage money</small>
+              </div>
+
+              <div class="finance-grid">
+                <div class="mini">
+                  <div class="label" id="t_income">Income</div>
+                  <input id="incomeInput" type="number" placeholder="Enter income" />
+                </div>
+                <div class="mini">
+                  <div class="label" id="t_expenses">Expenses</div>
+                  <input id="expensesInput" type="number" placeholder="Enter expenses" />
+                </div>
+              </div>
+
+              <div style="display:flex; gap:10px; margin-top:12px;">
+                <button class="btn primary" onclick="saveFinances()">Save Money</button>
+                <button class="btn" onclick="resetFinances()">Reset</button>
+              </div>
+
+              <div class="profit">
+                <div class="label" id="t_profit">Total Profit</div>
+                <div class="val" id="profitVal">$0</div>
+              </div>
+          
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
