@@ -6,23 +6,71 @@
     <title>Document</title>
 </head>
 <body>
-            <div id="livestock" class="page">
-          <div class="card">
-            <div class="section-title">
-              <span>Livestock</span>
-              <small onclick="openAddLivestockModal()">Add</small>
-            </div>
+        <!-- ADD LIVESTOCK MODAL -->
+  <div id="addLivestockModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>Add Livestock</h3>
+        <button class="close" onclick="closeModal('addLivestockModal')">×</button>
+      </div>
 
-            <div id="livestockList" class="list"></div>
+      <div class="modal-body">
+        <label>Animal Type</label>
+        <select id="animalType">
+          <option value="Cow">Cow</option>
+          <option value="Goat">Goat</option>
+          <option value="Pig">Pig</option>
+          <option value="Chicken">Chicken</option>
+        </select>
 
-            <div id="livestockEmpty" class="empty">
-              <div class="barn">🏚️</div>
-              <h2>No Livestock Added Yet</h2>
-              <p>Start tracking your animals by clicking the button below</p>
-              <button class="add-btn" onclick="openAddLivestockModal()">➕ Add Livestock</button>
-            </div>
-          </div>
+        <label>Animal ID</label>
+        <input id="animalId" placeholder="Example: COW-001" />
+
+        <label>Estimated Weight (kg)</label>
+        <input id="animalWeight" type="number" placeholder="Example: 120" />
+
+        <label>Health Status</label>
+        <select id="animalHealth">
+          <option value="Healthy">Healthy</option>
+          <option value="Sick">Sick</option>
+          <option value="Recovering">Recovering</option>
+        </select>
+
+        <label>Notes</label>
+        <input id="animalNotes" placeholder="Example: Pregnant, 2 years old" />
+
+        <div class="modal-actions">
+          <button class="btn" onclick="closeModal('addLivestockModal')">Cancel</button>
+          <button class="btn primary" onclick="saveLivestock()">Save</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT PROFILE MODAL -->
+  <div id="editProfileModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>Edit Profile</h3>
+        <button class="close" onclick="closeModal('editProfileModal')">×</button>
+      </div>
+
+      <div class="modal-body">
+        <label>Farmer Name</label>
+        <input id="editFarmerName" placeholder="Enter farmer name" />
+
+        <label>Farm Name</label>
+        <input id="editFarmName" placeholder="Enter farm name" />
+
+        <div class="modal-actions">
+          <button class="btn" onclick="closeModal('editProfileModal')">Cancel</button>
+          <button class="btn primary" onclick="saveProfile()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
+
 
