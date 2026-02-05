@@ -6,6 +6,23 @@
     <title>Document</title>
 </head>
 <body>
-    
+            <div id="livestock" class="page">
+          <div class="card">
+            <div class="section-title">
+              <span>Livestock</span>
+              <small onclick="openAddLivestockModal()">Add</small>
+            </div>
+
+            <div id="livestockList" class="list"></div>
+
+            <div id="livestockEmpty" class="empty">
+              <div class="barn">🏚️</div>
+              <h2>No Livestock Added Yet</h2>
+              <p>Start tracking your animals by clicking the button below</p>
+              <button class="add-btn" onclick="openAddLivestockModal()">➕ Add Livestock</button>
+            </div>
+          </div>
+        </div>
 </body>
+
 </html>
