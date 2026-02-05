@@ -8,8 +8,188 @@
 </head>
 <body>
     
-    <h1>Welcome to Agricon</h1> 
-    <p>Your gateway to modern agriculture solutions.</p>
+      <!-- APP -->
+  <div id="appRoot" class="app" style="display:none;">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">🌿</div>
+        <div>
+          <h1>Farm Manager</h1>
+          <p id="userLabel">Welcome</p>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button class="active" onclick="openPage('resources', this)">
+          <div class="ico">📚</div> <span id="t_nav_resources">Resources</span>
+        </button>
+        <button onclick="openPage('livestock', this)">
+          <div class="ico">🐄</div> <span id="t_nav_livestock">Livestock</span>
+        </button>
+        <button onclick="openPage('ai', this)">
+          <div class="ico">🤖</div> <span id="t_nav_ai">AI Helper</span>
+        </button>
+        <button onclick="openPage('account', this)">
+          <div class="ico">👤</div> <span id="t_nav_account">Account</span>
+        </button>
+      </div>
+
+      <div class="sidebar-footer">
+        <b id="t_status">Status:</b> <span id="syncText">Synced ✅</span><br/>
+        <b id="t_theme">Theme:</b> Farm Dark Green<br/>
+        <button class="btn danger" style="margin-top:10px; width:100%;" onclick="logout()">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+
+      <!-- Topbar -->
+      <header class="topbar">
+        <div>
+          <div class="page-title" id="pageTitle">Resources</div>
+          <div class="page-sub" id="pageSub">Feed tracking, weather & farming info</div>
+        </div>
+
+        <div class="top-actions">
+          <input class="search" id="searchBox" placeholder="Search..." />
+          <button class="chip" onclick="openSettingsModal()">⚙ Settings</button>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="content">
+
+        <!-- RESOURCES -->
+     
+
+            <!-- Feed Tracking -->
+            <div class="card">
+              <div class="section-title">
+                <span id="t_feed_title">Feed Tracking</span>
+                <small id="t_click_expand">Click to expand</small>
+              </div>
+
+              <div class="item" onclick="toggleDrop('dropCows', this)">
+                <div class="left">
+                  <div class="iconbox" onclick="openInfoModal('Cows Feed', 'Click the dropdown to see details.'); event.stopPropagation();">🐄</div>
+                  <div>
+                    <div class="title" id="t_cows">Cows</div>
+                    <div class="sub" id="cowsSub">200 kg remaining (20 days)</div>
+                  </div>
+                </div>
+                <div class="chev">▾</div>
+              </div>
+              <div id="dropCows" class="drop-content">
+                <b>Daily Weight Gain Tip (Changes daily):</b><br/>
+                <span id="dailyFeedTip">Loading tip...</span>
+                <br/><br/>
+                <b>Plan:</b><br/>
+                • Provide clean water always<br/>
+                • Add minerals & salt lick<br/>
+                • Give quality hay + concentrate
+              </div>
+
+              <div class="item" onclick="toggleDrop('dropGoats', this)">
+                <div class="left">
+                  <div class="iconbox purple" onclick="openInfoModal('Goats Feed', 'Click the dropdown to see details.'); event.stopPropagation();">🐐</div>
+                  <div>
+                    <div class="title" id="t_goats">Goats</div>
+                    <div class="sub" id="goatsSub">76 kg remaining (19 days)</div>
+                  </div>
+                </div>
+                <div class="chev">▾</div>
+              </div>
+              <div id="dropGoats" class="drop-content">
+                <b>Daily Weight Gain Tip (Changes daily):</b><br/>
+                <span id="dailyFeedTip2">Loading tip...</span>
+                <br/><br/>
+                <b>Plan:</b><br/>
+              
+              </div>
+            </div>
+
+            <!-- Weather -->
+            <div class="card">
+              <div class="section-title">
+                <span id="t_weather">Weather</span>
+                <small id="t_live">Live</small>
+              </div>
+
+              <div class="weather-row">
+                <div class="sun" onclick="fetchWeather()">☀️</div>
+                <div>
+                  <div class="temp" id="tempVal">--°C</div>
+                  <div class="desc" id="weatherDesc">Tap sun icon to load weather</div>
+                </div>
+              </div>
+
+              <div class="weather-meta">
+                <div id="humidityVal">💧 --%</div>
+                <div id="windVal">🌬️ -- km/h</div>
+              </div>
+
+              <div style="margin-top:14px;">
+                <button class="btn primary" onclick="openInfoModal('Crop Start Advice', getCropStartAdvice())">
+                  When to Start Crop Growing
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="height:16px;"></div>
+
+          <!-- Farming Info -->
+          <div class="card">
+            <div class="section-title">
+              <span id="t_farm_info">Farming Information</span>
+              <small id="t_weekly">Weekly tips</small>
+            </div>
+
+            <div class="item" onclick="toggleDrop('dropCrop', this)">
+              <div class="left">
+                <div class="iconbox" onclick="openInfoModal('Crop Tips', 'These tips change every week automatically.'); event.stopPropagation();">🌱</div>
+                <div class="title" id="t_crop_tips">Crop Growing Tips</div>
+              </div>
+              <div class="chev">▾</div>
+            </div>
+            <div id="dropCrop" class="drop-content">
+              <b>This Week Tip:</b><br/>
+              <span id="weeklyCropTip">Loading...</span>
+            </div>
+
+            <div class="item" onclick="toggleDrop('dropSoil', this)">
+              <div class="left">
+                <div class="iconbox blue" onclick="openInfoModal('Soil Info', 'These tips change every week automatically.'); event.stopPropagation();">🧱</div>
+                <div class="title" id="t_soil">Soil Types & Best Practices</div>
+              </div>
+              <div class="chev">▾</div>
+            </div>
+            <div id="dropSoil" class="drop-content">
+              <b>This Week Tip:</b><br/>
+              <span id="weeklySoilTip">Loading...</span>
+            </div>
+
+            <div class="item" onclick="toggleDrop('dropPlan', this)">
+              <div class="left">
+                <div class="iconbox yellow" onclick="openInfoModal('Weather Planning', 'These tips change every week automatically.'); event.stopPropagation();">☁️</div>
+                <div class="title" id="t_plan">Weather Planning</div>
+              </div>
+              <div class="chev">▾</div>
+            </div>
+            <div id="dropPlan" class="drop-content">
+              <b>This Week Tip:</b><br/>
+              <span id="weeklyPlanTip">Loading...</span>
+            </div>
+          </div>
+
+        </div>
+
+
      
 </body>
+
 </html>
